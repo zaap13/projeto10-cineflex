@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./globalStyles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./Main";
+import Movie from "./Movie";
+import Session from "./Session";
+import Success from "./Success";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <GlobalStyle />
+      {/* Header */}
+
+      <Routes>
+        {/* Cada rota tem que estar em Route */}
+        <Route path="/" element={<Main />} />
+        <Route path="/filme" element={<Movie />} />
+        <Route path="/sessao" element={<Session />} />
+        <Route path="/sucesso" element={<Success />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
