@@ -10,21 +10,23 @@ export default function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <Header>CINEFLEX</Header>
+      <Container>
+        <Header>CINEFLEX</Header>
 
-      <Routes>
-        {/* Cada rota tem que estar em Route */}
-        <Route path="/" element={<Main />} />
-        <Route path="/filme/:idFilme" element={<Movie />} />
-        <Route path="/sessao" element={<Session />} />
-        <Route path="/sucesso" element={<Success />} />
-      </Routes>
+        <Routes>
+          {/* Cada rota tem que estar em Route */}
+          <Route path="/" element={<Main />} />
+          <Route path="/filme/:idFilme" element={<Movie />} />
+          <Route path="/sessao/:idSessao" element={<Session />} />
+          <Route path="/sucesso" element={<Success />} />
+        </Routes>
+      </Container>
     </BrowserRouter>
   );
 }
 
 const Header = styled.header`
-  position: fixed;
+  position: sticky;
   left: 0px;
   top: 0px;
 
@@ -43,4 +45,11 @@ const Header = styled.header`
   color: #e8833a;
 
   background: #c3cfd9;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
