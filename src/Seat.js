@@ -13,7 +13,6 @@ export default function Seat({ name, isAvailable, setSelected, selected }) {
     }
     setClick(!click);
     setSelected(selecteds.filter((i) => i !== ""));
-
   }
   return (
     <>
@@ -29,7 +28,7 @@ const SeatBox = styled.button`
   height: 26px;
 
   background: ${(props) => (props.click ? "#1AAE9E" : "#c3cfd9")};
-  border: 1px solid #808f9d;
+  border: 1px solid ${(props) => (props.click ? "#0E7D71" : "#808F9D")};
   border-radius: 12px;
 
   font-family: "Roboto";

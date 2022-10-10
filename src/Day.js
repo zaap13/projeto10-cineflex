@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 export default function Day({ day }) {
   return (
@@ -10,7 +11,7 @@ export default function Day({ day }) {
       <Times>
         {day.showtimes.map((i) => (
           <Link key={i.id} to={`/sessao/${i.id}`}>
-            <Showtime >{i.name}</Showtime>
+            <Button>{i.name}</Button>
           </Link>
         ))}
       </Times>
@@ -39,27 +40,6 @@ const Date = styled.p`
   letter-spacing: 0.02em;
 
   color: #293845;
-`;
-
-const Showtime = styled.button`
-  width: 83px;
-  height: 43px;
-
-  background: #e8833a;
-  border-radius: 3px;
-
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.02em;
-
-  color: #ffffff;
-  cursor: pointer;
 `;
 
 const Times = styled.div`
