@@ -105,7 +105,6 @@ export default function Session() {
           <p>Indisponível</p>
         </Label>
       </Labels>
-      {seatNumber}
       <Form onSubmit={handleSubmit}>
         <label htmlFor="name">Nome do comprador:</label>
         <input
@@ -114,7 +113,6 @@ export default function Session() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {name}
         <label htmlFor="cpf">CPF do comprador:</label>
         <input
           maxLength="14"
@@ -123,7 +121,6 @@ export default function Session() {
           value={cpf}
           onChange={(e) => setCpf(cpfMask(e.target.value))}
         />
-        {cpf}
         <Button type="submit">Reservar assento(s)</Button>
       </Form>
 
