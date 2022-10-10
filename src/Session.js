@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import Title from "./Title";
@@ -14,10 +14,12 @@ export default function Session() {
   const [day, setDay] = useState([]);
   const [seats, setSeats] = useState([]);
   const [selected, setSelected] = useState([]);
+  const [seatNumber, setSeatNumber] = useState([]);
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
 
   const { idSessao } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const promise = axios.get(
@@ -52,8 +54,18 @@ export default function Session() {
       assets
     );
 
+    const info = {
+      cpf,
+      ids: seatNumber,
+      name,
+      movie: mov.title,
+      weekday: day.weekday,
+      session: session.name,
+    };
+
     promise.then(() => {
       console.log(assets);
+      navigate("/sucesso", { state: info });
     });
     promise.catch(() => {
       console.log("erro");
@@ -71,7 +83,10 @@ export default function Session() {
             name={s.name}
             isAvailable={s.isAvailable}
             setSelected={setSelected}
+            id={s.id}
             selected={selected}
+            seatNumber={seatNumber}
+            setSeatNumber={setSeatNumber}
           />
         ))}
       </Seats>
@@ -90,7 +105,7 @@ export default function Session() {
           <p>Indisponível</p>
         </Label>
       </Labels>
-      {selected}
+      {seatNumber}
       <Form onSubmit={handleSubmit}>
         <label htmlFor="name">Nome do comprador:</label>
         <input

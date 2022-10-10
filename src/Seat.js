@@ -1,18 +1,30 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function Seat({ name, isAvailable, setSelected, selected }) {
+export default function Seat({
+  name,
+  isAvailable,
+  setSelected,
+  selected,
+  id,
+  setSeatNumber,
+  seatNumber,
+}) {
   const [click, setClick] = useState(false);
 
   function handleSelect() {
     let selecteds = [];
+    let numbers = [];
     if (!click) {
-      selecteds = [...selected, name];
+      selecteds = [...selected, id];
+      numbers = [...seatNumber, name];
     } else {
-      selecteds = selected.map((item) => (item === name ? "" : item));
+      selecteds = selected.map((item) => (item === id ? "" : item));
+      numbers = seatNumber.map((item) => (item === name ? "" : item));
     }
     setClick(!click);
     setSelected(selecteds.filter((i) => i !== ""));
+    setSeatNumber(numbers.filter((i) => i !== ""));
   }
   return (
     <>
